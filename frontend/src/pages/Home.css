@@ -1,0 +1,104 @@
+.home-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.post-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.post-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.post-input:focus {
+  border-color: #007bff;
+}
+
+.btn-post {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-post:disabled {
+  background-color: #ccc;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-card {
+  background: white;
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.post-author {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.post-text {
+  margin: 12px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 12px;
+}
+
+.btn-like {
+  background: #fff0f0;
+  border: 1px solid #ffccd5;
+  color: #ff4d6d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.btn-like:active {
+  transform: scale(0.95);
+}
+
+.btn-delete {
+  margin-left: auto;
+  color: #ff4d4d;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.btn-delete:hover {
+  text-decoration: underline;
+}

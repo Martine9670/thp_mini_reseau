@@ -1,0 +1,11 @@
+/* Style global minimaliste */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6; /* Un gris très léger pour faire ressortir les posts blancs */
+  color: #333;
+}
+
+.app-content {
+  padding-top: 20px; /* Espace entre la Navbar et le contenu */
+}
