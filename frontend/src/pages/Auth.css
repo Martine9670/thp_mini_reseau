@@ -1,0 +1,67 @@
+/* Auth.css */
+
+/* Conteneur pour centrer le formulaire sur la page */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+/* On cible le formulaire directement */
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid #ee9b9b; /* Bordure rose identique à tes posts */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Style des inputs (Username, Email, Password) */
+form input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+form input:focus {
+  border-color: #007bff; /* Bleu action cohérent avec ton app */
+}
+
+/* Style du bouton Valider */
+form button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+form button:active {
+  transform: scale(0.98);
+}

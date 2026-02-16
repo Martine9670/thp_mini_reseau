@@ -1,3 +1,11 @@
+/* Cette règle s'applique à l'intégralité de la fenêtre */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #b2defc;
+  min-height: 100vh;
+}
+
 .home-container {
   max-width: 600px;
   margin: 0 auto;
@@ -50,7 +58,7 @@
 
 .post-card {
   background: white;
-  border: 1px solid #eee;
+  border: 2px solid #ee9b9b;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -72,13 +80,13 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid #ee9b9b;
   padding-top: 12px;
 }
 
 .btn-like {
   background: #fff0f0;
-  border: 1px solid #ffccd5;
+  border: 2px solid #ffccd5;
   color: #ff4d6d;
   padding: 6px 12px;
   border-radius: 20px;

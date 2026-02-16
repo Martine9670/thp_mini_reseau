@@ -71,6 +71,9 @@
       "relation": "oneToMany",
       "target": "api::post.post",
       "mappedBy": "user"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../store';
 import { useNavigate } from 'react-router-dom';
+import './Auth.css'; // Import ajouté
 
 export const Auth = ({ isRegister }) => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // On récupère l'URL de base depuis le .env
   const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // On construit l'URL dynamiquement
     const url = isRegister 
       ? `${API_URL}/api/auth/local/register` 
       : `${API_URL}/api/auth/local`;
 
+    // Structure du body pour Strapi
     const body = isRegister 
       ? { 
           username: formData.username, 
@@ -26,7 +26,7 @@ export const Auth = ({ isRegister }) => {
           password: formData.password 
         }
       : { 
-          identifier: formData.email, 
+          identifier: formData.email, // L'email sert d'identifiant à la connexion
           password: formData.password 
         };
 
@@ -52,26 +52,38 @@ export const Auth = ({ isRegister }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{isRegister ? 'Inscription' : 'Connexion'}</h2>
-      {isRegister && (
+    <div className="auth-container">
+      <form onSubmit={handleSubmit}>
+        <h2>{isRegister ? 'Inscription' : 'Connexion'}</h2>
+        
+        {isRegister && (
+          <input 
+            type="text" 
+            placeholder="Username" 
+            required
+            value={formData.username}
+            onChange={e => setFormData({...formData, username: e.target.value})} 
+          />
+        )}
+        
         <input 
           type="text" 
-          placeholder="Username" 
-          onChange={e => setFormData({...formData, username: e.target.value})} 
+          placeholder={isRegister ? "Email" : "Email ou Username"} 
+          required
+          value={formData.email}
+          onChange={e => setFormData({...formData, email: e.target.value})} 
         />
-      )}
-      <input 
-        type="text" 
-        placeholder="Email ou Username" 
-        onChange={e => setFormData({...formData, email: e.target.value})} 
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        onChange={e => setFormData({...formData, password: e.target.value})} 
-      />
-      <button type="submit">Valider</button>
-    </form>
+        
+        <input 
+          type="password" 
+          placeholder="Password" 
+          required
+          value={formData.password}
+          onChange={e => setFormData({...formData, password: e.target.value})} 
+        />
+        
+        <button type="submit">Valider</button>
+      </form>
+    </div>
   );
 };

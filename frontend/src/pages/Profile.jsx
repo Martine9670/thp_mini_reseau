@@ -61,30 +61,42 @@ export const Profile = ({ isPublic = false }) => {
     fetchProfile();
   }, [fetchProfile]);
 
-  const handleUpdate = async (e) => {
+const handleUpdate = async (e) => {
     e.preventDefault();
+    
+    // Sécurité : ne pas envoyer de données si on n'a pas de token
+    if (!token || !currentUser?.id) return;
+
     try {
-      // Mise à jour avec API_URL
       const res = await fetch(`${API_URL}/api/users/${currentUser.id}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}` 
         },
-        body: JSON.stringify(editData)
+        // On s'assure d'envoyer un objet propre
+        body: JSON.stringify({
+          username: editData.username,
+          description: editData.description
+        })
       });
       
+      const updatedUser = await res.json();
+
       if (res.ok) {
-        const updatedUser = await res.json();
-        dispatch(updateUser(updatedUser));
-        setProfileData(updatedUser);
+        dispatch(updateUser(updatedUser)); // Met à jour le store Redux
+        setProfileData(updatedUser);      // Met à jour l'affichage local
         alert("Profil mis à jour !");
+      } else {
+        // Affiche l'erreur réelle de Strapi pour débugger
+        console.error("Détails erreur Strapi:", updatedUser);
+        alert(`Erreur: ${updatedUser.error?.message || "Impossible de mettre à jour"}`);
       }
     } catch (error) {
-      console.error("Erreur mise à jour :", error);
+      console.error("Erreur réseau mise à jour :", error);
     }
   };
-
+  
   if (loading || (!isPublic && !currentUser)) {
     return <div className="profile-container"><p className="loading-text">Chargement du profil...</p></div>;
   }
